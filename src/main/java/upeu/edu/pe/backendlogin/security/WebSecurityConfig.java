@@ -43,6 +43,7 @@ public class WebSecurityConfig {
 				// API PUBLICAS
 				.antMatchers(HttpMethod.POST, "/api/usuario/create-usuario").permitAll()
 				// API PRIVADAS
+//				.antMatchers(HttpMethod.GET, "/api/categoria/get-all").access("hasAuthority('ADMIN_ROLE') or hasAuthority('USER_ROLE') ")
 				.antMatchers(HttpMethod.GET, "/api/categoria/get-all").hasAuthority("ADMIN_ROLE")
 				.antMatchers(HttpMethod.GET, "/api/categoria/get-categoria/**").hasAuthority("USER_ROLE")
 				.anyRequest()
@@ -78,7 +79,7 @@ public class WebSecurityConfig {
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		config.setAllowedOrigins(Arrays.asList("http://localhost:64340"));
 		config.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
 		config.setAllowCredentials(true);
 		config.setAllowedHeaders(Arrays.asList("Content-Type","Authorization"));
